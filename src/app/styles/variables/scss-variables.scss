@@ -1,0 +1,30 @@
+@use '../tools/functions' as *;
+
+$fontFamily: 'Lato', sans-serif;
+$fontSize: rem(16);
+
+// Минимальная ширина страницы
+$minWidth: 320;
+// Ширина полотна (макета)
+$maxWidth: 1920;
+// Ширина ограничивающего контейнера
+$maxWidthContainer: 1440;
+// Общий отступ у контейнера
+$containerPadding: 40;
+
+// Ширина срабатывания первого брейкпоинта
+$containerWidth: $maxWidthContainer + $containerPadding;
+
+// Брейк-поинты
+$pc: $containerWidth;
+$tablet: 991.98; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 768.98; // Телефоны L
+$mobileMd: 559.98; // Телефоны M
+$mobileSmall: 479.98; // Телефоны S
+
+$breakpoints: (
+  'pc': em($pc),
+  'tablet': em($tablet),
+  'mobile': em($mobile),
+  'mobileSmall': em($mobileSmall),
+);

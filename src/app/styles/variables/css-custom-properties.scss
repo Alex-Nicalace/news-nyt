@@ -1,0 +1,7 @@
+@use '../tools/functions' as *;
+
+:root {
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 900; // используем 900 как extra-bold
+}

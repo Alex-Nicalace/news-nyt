@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+@use './base/reset';
+@use './base/typography';
+@use './variables/themes/light';
+@use './variables/themes/dark';
+@use './variables/css-custom-properties';
+@use './variables/scss-variables';
+
+body {
+  display: flex;
+  flex-direction: column;
+  max-width: rem($maxWidthContainer);
+  box-sizing: content-box;
+  margin: 0 auto;
+  padding: 0 rem(math.div($containerPadding, 2));
+  scroll-behavior: smooth;
+}
+
+main {
+  flex-grow: 1;
+}
+
+/* Класс для визуального скрытия, но доступности */
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  clip-path: inset(100%);
+}
