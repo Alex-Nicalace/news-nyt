@@ -1,0 +1,7 @@
+@use 'sass:math';
+
+.Container {
+  max-width: rem($maxWidthContainer);
+  margin: 0 auto;
+  padding: 0 rem(math.div($containerPadding, 2));
+}
