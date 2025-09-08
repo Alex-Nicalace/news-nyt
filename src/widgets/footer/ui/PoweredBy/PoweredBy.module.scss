@@ -1,0 +1,20 @@
+.PoweredBy {
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  row-gap: rem(8);
+}
+
+.text {
+  font-size: rem(12);
+}
+
+.link {
+  &:is(:hover, :focus-visible) {
+    filter: brightness(0.8);
+  }
+
+  &:active {
+    filter: brightness(0.7);
+  }
+}
