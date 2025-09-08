@@ -1,20 +1,17 @@
 import clsx from 'clsx';
-import { useState } from 'react';
-
 import styles from './BurgerButton.module.scss';
 
 type BurgerButtonProps = {
   className?: string;
+  onClick?: () => void;
 };
 
-export default function BurgerButton({ className }: BurgerButtonProps) {
-  const [open, setOpen] = useState(false);
-
+export default function BurgerButton({
+  className,
+  onClick,
+}: BurgerButtonProps) {
   return (
-    <button
-      className={clsx(styles.burger, className, { [styles.active]: open })}
-      onClick={() => setOpen(!open)}
-    >
+    <button className={clsx(styles.burger, className)} onClick={onClick}>
       <span className={styles.icon}>
         <span></span>
       </span>
