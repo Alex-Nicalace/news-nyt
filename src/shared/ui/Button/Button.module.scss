@@ -1,0 +1,17 @@
+.Button {
+  font-size: rem(12);
+  text-align: center;
+
+  &:is(:hover, :focus-visible) {
+    filter: brightness(0.8); // Затемнение на 20%
+  }
+
+  &:active {
+    filter: brightness(0.7); // Еще большее затемнение
+  }
+}
+
+.clear {
+  background-color: transparent;
+  border: none;
+}
