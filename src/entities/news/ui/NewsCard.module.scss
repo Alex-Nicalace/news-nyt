@@ -1,16 +1,25 @@
 .NewsCard {
-  &:not(:last-child) {
-    border-bottom: rem(1) solid var(--color-border);
-  }
-}
-.link {
+  position: relative;
   display: grid;
   grid-template:
     '. h' auto
     'i t' auto
     'i d' auto / #{percent(99, 320)} 1fr;
   gap: rem(8) rem(16);
+
+  &:not(:last-child) {
+    border-bottom: rem(1) solid var(--color-border);
+  }
 }
+
+.link {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
 .title {
   grid-area: h;
   font-weight: var(--font-weight-extrabold);
