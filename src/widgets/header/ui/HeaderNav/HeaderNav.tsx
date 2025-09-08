@@ -14,6 +14,8 @@ export default function HeaderNav({
   mode,
   onClose,
 }: HeaderNavProps) {
+  const isDesktop = mode === 'desktop';
+
   return (
     <Container
       tag="nav"
@@ -22,17 +24,19 @@ export default function HeaderNav({
       <ul className={styles.list}>
         {NAV_LINKS.map(({ title, href }) => (
           <li className={styles.item} key={href}>
-            <Button href={href} size="l">
+            <Button href={href} size={isDesktop ? 'm' : 'l'}>
               {title}
             </Button>
           </li>
         ))}
       </ul>
-      <button
-        className={styles.btnClose}
-        aria-label="Close menu"
-        onClick={onClose}
-      />
+      {!isDesktop && (
+        <button
+          className={styles.btnClose}
+          aria-label="Close menu"
+          onClick={onClose}
+        />
+      )}
     </Container>
   );
 }

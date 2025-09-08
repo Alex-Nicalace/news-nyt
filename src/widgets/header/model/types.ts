@@ -1,1 +1,1 @@
-export type HeaderNavMode = 'opened' | 'closed';
+export type HeaderNavMode = 'opened' | 'closed' | 'desktop';
