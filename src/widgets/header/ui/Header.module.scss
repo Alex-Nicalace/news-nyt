@@ -1,7 +1,10 @@
 .Header {
-  position: relative;
+  position: sticky;
+  top: 0;
   padding: rem(20) 0;
   border-bottom: rem(1) solid var(--color-border);
+  z-index: 10;
+  backdrop-filter: blur(rem(10));
 }
 
 .burger {
