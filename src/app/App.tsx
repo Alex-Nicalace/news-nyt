@@ -1,9 +1,9 @@
-import { HomePage } from 'pages/home-page';
+import { NewsPage } from 'pages/news-page';
 
 function App() {
   return (
     <>
-      <HomePage />
+      <NewsPage />
     </>
   );
 }

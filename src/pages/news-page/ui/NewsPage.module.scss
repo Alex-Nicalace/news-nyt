@@ -1,0 +1,16 @@
+.container {
+  padding-block: rem(10);
+}
+
+.section {
+  &:not(:last-child) {
+    margin-bottom: rem(32);
+  }
+}
+
+.title {
+  margin-bottom: rem(16);
+}
+
+.card {
+}
