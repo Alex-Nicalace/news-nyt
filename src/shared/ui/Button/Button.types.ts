@@ -13,12 +13,11 @@ type ButtonNativeProps = DetailedHTMLProps<
 
 type AnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>;
 
+export type ButtonTheme = 'clear';
+
+export type ButtonSize = 's' | 'm' | 'l';
+
 export type ButtonProps = (ButtonNativeProps | AnchorProps) & {
   theme?: ButtonTheme;
+  size?: ButtonSize;
 };
-
-export const ButtonTheme = {
-  CLEAR: 'clear',
-} as const;
-
-export type ButtonTheme = (typeof ButtonTheme)[keyof typeof ButtonTheme];

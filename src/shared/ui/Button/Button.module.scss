@@ -15,3 +15,10 @@
   background-color: transparent;
   border: none;
 }
+
+.l {
+  text-transform: uppercase;
+  font-weight: var(--font-weight-bold);
+  font-size: rem(22);
+  letter-spacing: 0.1em;
+}
