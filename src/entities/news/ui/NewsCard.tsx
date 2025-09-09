@@ -1,35 +1,31 @@
 import clsx from 'clsx';
 import styles from './NewsCard.module.scss';
+import type { News } from '../model/types';
 
-type NewsCardProps = {
+type NewsCardProps = News & {
   className?: string;
-  href: string;
-  image: string;
-  title: string;
-  text: string;
-  date: string; // TODO: date
 };
 
 export default function NewsCard({
   className,
-  href,
+  webUrl,
   image,
-  title,
-  text,
-  date,
+  source,
+  abstract,
+  pubDate,
 }: NewsCardProps) {
   return (
     <article className={clsx(styles.NewsCard, className)}>
       <h3 className={styles.title}>
-        <a className={styles.link} href={href}>
-          {title}
+        <a className={styles.link} href={webUrl}>
+          {source}
         </a>
       </h3>
       <img className={styles.img} src={image} loading="lazy" alt="" />
-      <p className={styles.text}>{text}</p>
+      <p className={styles.text}>{abstract}</p>
       <time className={styles.date} dateTime="">
         {/* // TODO: dateTime YYYY-MM-DDThh:mm:ssTZD */}
-        {date}
+        {pubDate}
       </time>
     </article>
   );
