@@ -1,17 +1,5 @@
+import type { NewsByDate, News } from '../model/types';
 import type { NewsDTO } from './dto';
-
-export interface News {
-  abstract: string;
-  webUrl: string;
-  image: string;
-  pubDate: Date;
-  source: string;
-}
-
-export interface NewsByDate {
-  pubDate: Date;
-  news: News[];
-}
 
 export function adaptNewsDTO(dto: NewsDTO): NewsByDate[] {
   if (!dto.response.docs) {
@@ -35,13 +23,13 @@ export function adaptNewsDTO(dto: NewsDTO): NewsByDate[] {
       abstract: item.abstract,
       webUrl: item.web_url,
       image: item.multimedia?.[0]?.url || '',
-      pubDate: new Date(item.pub_date),
+      pubDate: item.pub_date,
       source: item.source,
     };
 
     if (day !== currentDate) {
       currentDate = day;
-      currentGroup = { pubDate: new Date(day), news: [] };
+      currentGroup = { pubDate: day, news: [] };
       grouped.push(currentGroup);
     }
 
