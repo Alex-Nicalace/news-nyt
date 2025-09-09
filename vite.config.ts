@@ -18,4 +18,9 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      '/svc/archive/v1': 'https://api.nytimes.com',
+    },
+  },
 });
