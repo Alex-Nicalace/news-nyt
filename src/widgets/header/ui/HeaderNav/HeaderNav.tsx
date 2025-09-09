@@ -1,6 +1,5 @@
 import clsx from 'clsx';
-import { Container } from 'shared/ui';
-import { Button } from 'shared/ui/Button';
+import { Button, Container } from 'shared/ui';
 import { NAV_LINKS, type HeaderNavMode } from '../../model';
 import styles from './HeaderNav.module.scss';
 

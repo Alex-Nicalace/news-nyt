@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Button } from 'shared/ui/Button';
+import { Button } from 'shared/ui';
 import { NAV_LINKS } from '../../model';
 import styles from './FooterNav.module.scss';
 

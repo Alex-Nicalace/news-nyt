@@ -1,4 +1,4 @@
-import { CustomError } from 'shared/lib/Error';
+import { CustomError } from 'shared/lib';
 
 export class ApiError extends CustomError {
   status: number;
