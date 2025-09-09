@@ -1,6 +1,7 @@
 import { ApiError } from './ApiError';
 
 const API_URL = '/svc/archive/v1';
+export const NYT_IMAGE_BASE_URL = 'https://static01.nyt.com/';
 
 export async function apiFetch<T>(path: string, options?: RequestInit) {
   const response = await fetch(

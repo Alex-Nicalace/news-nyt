@@ -1,3 +1,4 @@
+import { NYT_IMAGE_BASE_URL } from 'shared/api';
 import type { NewsByDate, News } from '../model/types';
 import type { NewsDTO } from './dto';
 
@@ -22,7 +23,7 @@ export function adaptNewsDTO(dto: NewsDTO): NewsByDate[] {
     const news: News = {
       abstract: item.abstract,
       webUrl: item.web_url,
-      image: item.multimedia?.[0]?.url || '',
+      image: `${NYT_IMAGE_BASE_URL}${item.multimedia?.[0]?.url || ''}`,
       pubDate: item.pub_date,
       source: item.source,
     };
