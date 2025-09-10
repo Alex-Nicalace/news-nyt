@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { useCallback, useEffect } from 'react';
 import { Virtuoso } from 'react-virtuoso';
 
@@ -43,15 +44,28 @@ export default function NewsPage() {
             style={{ height: '100%' }}
             data={itemsFlat}
             endReached={loadMore}
-            itemContent={(_, item) => {
+            itemContent={(index, item) => {
               if (typeof item === 'string') {
                 return (
-                  <Title className={styles.title} as="h2">
+                  <Title
+                    className={clsx(styles.title, {
+                      [styles.titleNotFirst]: index !== 0,
+                    })}
+                    as="h2"
+                  >
                     {`News for ${formatDateToDDMMYYYY(item)}`}
                   </Title>
                 );
               }
-              return <NewsCard className={styles.card} {...item} />;
+              return (
+                <NewsCard
+                  className={clsx(styles.card, {
+                    [styles.cardLastDayOfMonth]:
+                      typeof itemsFlat[index + 1] === 'string',
+                  })}
+                  {...item}
+                />
+              );
             }}
             components={{ Footer: FooterSpinner }}
           />

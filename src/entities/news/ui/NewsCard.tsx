@@ -25,7 +25,6 @@ export default function NewsCard({
       <img className={styles.img} src={image} loading="lazy" alt="" />
       <p className={styles.text}>{abstract}</p>
       <time className={styles.date} dateTime="">
-        {/* // TODO: dateTime YYYY-MM-DDThh:mm:ssTZD */}
         {formatToShortDateTime(pubDate)}
       </time>
     </article>
