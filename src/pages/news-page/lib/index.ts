@@ -1,0 +1,1 @@
+export { useFlattenNews } from './useFlattenNews';

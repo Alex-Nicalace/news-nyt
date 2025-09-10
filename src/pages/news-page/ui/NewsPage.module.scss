@@ -17,5 +17,12 @@
 }
 
 .spinner {
-  margin: rem(32) auto;
+  margin: rem(50) auto;
+}
+
+.footerSpinner {
+  height: rem(60);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
