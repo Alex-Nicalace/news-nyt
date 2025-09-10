@@ -11,7 +11,7 @@ export const fetchNewsPrevMonth = createAsyncThunk(
     const { year: currentYear, month: currentMonth } =
       monthsLoaded.length > 0
         ? monthsLoaded[monthsLoaded.length - 1]
-        : { year: 2025, month: 1 };
+        : { year: 2025, month: 6 };
 
     const prevMonth = new Date(currentYear, currentMonth - 2, 1);
 
