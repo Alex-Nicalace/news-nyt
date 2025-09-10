@@ -2,17 +2,18 @@
   padding-block: rem(10);
 }
 
-.section {
-  &:not(:last-child) {
-    margin-bottom: rem(32);
+.title {
+  margin-bottom: rem(16);
+
+  &:not(:first-child) {
+    margin-top: rem(32);
   }
 }
 
-.title {
-  margin-bottom: rem(16);
-}
-
 .card {
+  &:has(+ &) {
+    border-bottom: rem(1) solid var(--color-border);
+  }
 }
 
 .spinner {

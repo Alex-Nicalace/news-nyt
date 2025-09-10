@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 
 import { fetchNewsPrevMonth, NewsCard, selectNews } from 'entities/news';
 import {
@@ -15,8 +15,6 @@ import styles from './NewsPage.module.scss';
 export default function NewsPage(/*{ }: NewsPageProps*/) {
   const { items, isLoading, error } = useAppSelector(selectNews);
   const dispatch = useAppDispatch();
-
-  console.log({ items, isLoading, error });
 
   useEffect(
     function loadOnMount() {
@@ -35,7 +33,7 @@ export default function NewsPage(/*{ }: NewsPageProps*/) {
       <Container className={styles.container} tag="main">
         {items.length > 0 &&
           items.map(({ pubDate, news }) => (
-            <section className={styles.section} key={pubDate}>
+            <Fragment key={pubDate}>
               <Title
                 className={styles.title}
                 as="h2"
@@ -47,7 +45,7 @@ export default function NewsPage(/*{ }: NewsPageProps*/) {
                   {...newsItem}
                 />
               ))}
-            </section>
+            </Fragment>
           ))}
         {isLoading && <Spinner className={styles.spinner} />}
         {error && <p>{error}</p>}
