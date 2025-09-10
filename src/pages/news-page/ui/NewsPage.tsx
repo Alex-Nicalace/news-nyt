@@ -1,75 +1,56 @@
-import { Header } from 'widgets/header';
-import { Footer } from 'widgets/footer';
-import { Container, Title } from 'shared/ui';
-import { NewsCard } from 'entities/news';
-import styles from './NewsPage.module.scss';
+import { useEffect } from 'react';
 
-const newsByDate = [
-  {
-    date: '2023-02-26',
-    news: [
-      {
-        title: 'CNN',
-        href: 'https://www.cnn.com/2023/02/26/tech/tiktok-privacy/index.html',
-        image: 'img.png',
-        date: 'Feb 26, 2023, 16.32 PM',
-        text: 'Why TikTok is taking months to delete personal US user data from servers outside its Project Texas firewalls, even as its political standing sours',
-      },
-      {
-        title: 'CNN',
-        href: 'https://www.cnn.com/2023/02/25/tech/tiktok-privacy/index.html',
-        image: 'img.png',
-        date: 'Feb 26, 2023, 16.32 PM',
-        text: 'Why TikTok is taking months to delete personal US user data from servers outside its Project Texas firewalls, even as its political standing sours',
-      },
-    ],
-  },
-  {
-    date: '2023-02-27',
-    news: [
-      {
-        title: 'CNN',
-        href: 'https://www.cnn.com/2023/02/24/tech/tiktok-privacy/index.html',
-        image: 'img.png',
-        date: 'Feb 26, 2023, 16.32 PM',
-        text: 'Why TikTok is taking months to delete personal US user data from servers outside its Project Texas firewalls, even as its political standing sours',
-      },
-      {
-        title: 'CNN',
-        href: 'https://www.cnn.com/2023/02/23/tech/tiktok-privacy/index.html',
-        image: 'img.png',
-        date: 'Feb 26, 2023, 16.32 PM',
-        text: 'Why TikTok is taking months to delete personal US user data from servers outside its Project Texas firewalls, even as its political standing sours',
-      },
-      {
-        title: 'CNN',
-        href: 'https://www.cnn.com/2023/02/22/tech/tiktok-privacy/index.html',
-        image: 'img.png',
-        date: 'Feb 26, 2023, 16.32 PM',
-        text: 'Why TikTok is taking months to delete personal US user data from servers outside its Project Texas firewalls, even as its political standing sours',
-      },
-    ],
-  },
-];
+import { fetchNewsPrevMonth, NewsCard, selectNews } from 'entities/news';
+import {
+  formatDateToDDMMYYYY,
+  useAppDispatch,
+  useAppSelector,
+} from 'shared/lib';
+import { Container, Spinner, Title } from 'shared/ui';
+import { Footer } from 'widgets/footer';
+import { Header } from 'widgets/header';
+import styles from './NewsPage.module.scss';
 
 // type NewsPageProps = { }
 export default function NewsPage(/*{ }: NewsPageProps*/) {
+  const { items, isLoading, error } = useAppSelector(selectNews);
+  const dispatch = useAppDispatch();
+
+  console.log({ items, isLoading, error });
+
+  useEffect(
+    function loadOnMount() {
+      const promise = dispatch(fetchNewsPrevMonth());
+
+      return () => {
+        promise.abort();
+      };
+    },
+    [dispatch]
+  );
+
   return (
     <>
       <Header />
       <Container className={styles.container} tag="main">
-        {newsByDate.map(({ date, news }) => (
-          <section className={styles.section} key={date}>
-            <Title className={styles.title} as="h2">{`News for ${date}`}</Title>
-            {news.map((newsItem) => (
-              <NewsCard
-                className={styles.card}
-                key={newsItem.href}
-                {...newsItem}
-              />
-            ))}
-          </section>
-        ))}
+        {items.length > 0 &&
+          items.map(({ pubDate, news }) => (
+            <section className={styles.section} key={pubDate}>
+              <Title
+                className={styles.title}
+                as="h2"
+              >{`News for ${formatDateToDDMMYYYY(pubDate)}`}</Title>
+              {news.map((newsItem) => (
+                <NewsCard
+                  className={styles.card}
+                  key={newsItem.webUrl}
+                  {...newsItem}
+                />
+              ))}
+            </section>
+          ))}
+        {isLoading && <Spinner className={styles.spinner} />}
+        {error && <p>{error}</p>}
       </Container>
       <Footer />
     </>
