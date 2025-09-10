@@ -8,14 +8,21 @@
 @use './variables/scss-variables';
 
 body {
-  display: flex;
-  flex-direction: column;
   box-sizing: content-box;
   scroll-behavior: smooth;
 }
 
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 main {
   flex-grow: 1;
+  width: 100%;
 }
 
 /* Класс для визуального скрытия, но доступности */
