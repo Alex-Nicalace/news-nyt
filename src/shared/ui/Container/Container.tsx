@@ -4,10 +4,10 @@ import { createElement, type JSX } from 'react';
 import styles from './Container.module.scss';
 
 type Tags = keyof JSX.IntrinsicElements;
-type ContainerProps<T extends Tags> = {
+type ContainerProps<T extends Tags = 'div'> = {
   tag?: T;
 } & JSX.IntrinsicElements[T];
-export default function Container<T extends Tags>({
+export default function Container<T extends Tags = 'div'>({
   tag,
   className,
   ...props
